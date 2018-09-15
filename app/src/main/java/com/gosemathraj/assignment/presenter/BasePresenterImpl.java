@@ -39,6 +39,7 @@ public class BasePresenterImpl implements BasePresenter {
             @Override
             public void onResponse(Call<UserData> call, Response<UserData> response) {
                 List<User> userList = response.body().getData();
+                userList.addAll(userDao.getAllUsers());
                 insertAllUsers(userList);
                 baseView.showusers(userList);
                 baseView.closeProgressbar();

@@ -1,11 +1,18 @@
 package com.gosemathraj.assignment;
 
+import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.gosemathraj.assignment.data.UserDao;
+import com.gosemathraj.assignment.data.UserDatabase;
+
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import javax.inject.Inject;
 
 import static org.junit.Assert.*;
 
@@ -16,11 +23,4 @@ import static org.junit.Assert.*;
  */
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
-    @Test
-    public void useAppContext() {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getTargetContext();
-
-        assertEquals("com.gosemathraj.assignment", appContext.getPackageName());
-    }
 }
