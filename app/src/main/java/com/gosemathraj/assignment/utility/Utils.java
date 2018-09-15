@@ -1,4 +1,4 @@
-package com.gosemathraj.assignment.Utility;
+package com.gosemathraj.assignment.utility;
 
 public class Utils {
 

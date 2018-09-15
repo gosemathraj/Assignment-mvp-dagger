@@ -12,57 +12,74 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.gosemathraj.assignment.R;
-import com.gosemathraj.assignment.Utility.Utils;
 import com.gosemathraj.assignment.models.User;
+import com.gosemathraj.assignment.utility.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
 
     private Context context;
     private List<User> userList = new ArrayList<>();
+    private UserActions userActions;
 
     public UserAdapter(Context context, List<User> userList) {
         this.context = context;
         this.userList = userList;
+        userActions = (UserActions) context;
     }
 
     @NonNull
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.recyclerview_item_user,null);
+        View view = LayoutInflater.from(context).inflate(R.layout.recyclerview_item_user,parent,false);
         return new UserViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-//        User user = userList.get(position);
-//
-//        if(Utils.getInstance().isStringValidated(user.getFirstName())){
-//            holder.firstName.setText(user.getFirstName().toString());
-//        }
-//
-//        if(Utils.getInstance().isStringValidated(user.getLastName())){
-//            holder.lastName.setText(user.getLastName().toString());
-//        }
-//
-//        if(Utils.getInstance().isStringValidated(user.getAvatar())){
-//            Glide.with(context)
-//                    .load(user.getAvatar().toString())
-//                    .apply(new RequestOptions()
-//                    .placeholder(R.drawable.ic_launcher_background)
-//                    .centerCrop())
-//                    .into(holder.profileImage);
-//        }
+        final User user = userList.get(position);
+
+        if(Utils.getInstance().isStringValidated(user.getFirstName())){
+            holder.firstName.setText(user.getFirstName().toString());
+        }
+
+        if(Utils.getInstance().isStringValidated(user.getLastName())){
+            holder.lastName.setText(user.getLastName().toString());
+        }
+
+        if(Utils.getInstance().isStringValidated(user.getAvatar())){
+            Glide.with(context)
+                    .load(user.getAvatar().toString())
+                    .apply(new RequestOptions()
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .centerCrop())
+                    .into(holder.profileImage);
+        }else{
+            Glide.with(context)
+                    .load(R.drawable.ic_launcher_background)
+                    .apply(new RequestOptions()
+                            .placeholder(R.drawable.ic_launcher_background)
+                            .centerCrop())
+                    .into(holder.profileImage);
+        }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                userActions.onUserClicked(user);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return 20;
+        return userList.size();
     }
 
     static class UserViewHolder extends RecyclerView.ViewHolder{
@@ -78,5 +95,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             super(itemView);
             ButterKnife.bind(this,itemView);
         }
+    }
+
+    public interface UserActions{
+        void onUserClicked(User user);
     }
 }

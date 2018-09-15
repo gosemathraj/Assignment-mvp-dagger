@@ -11,7 +11,8 @@
 
         <!--Options to Delete and Edit-->
         <LinearLayout
-            android:layout_width="@dimen/size200dp"
+            android:id="@+id/edit_delete_options_linear"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
@@ -20,13 +21,64 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/edit_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Edit User"
+                    android:textColor="@color/gray9"
+                    android:textSize="@dimen/size14sp"
+                    android:layout_margin="16dp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size1dp"
+                android:background="@color/gray4"
+                android:layout_marginLeft="@dimen/size2dp"
+                android:layout_marginRight="@dimen/size2dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/delete_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delete User"
+                    android:textColor="@color/gray9"
+                    android:textSize="@dimen/size14sp"
+                    android:layout_margin="@dimen/size16dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--Edit and Delete User-->
+        <LinearLayout
+            android:id="@+id/edit_options_linear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_border"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/size16dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/first_name_edit"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Edit User"
+                    android:hint="Enter First Name"
                     android:textColor="@color/gray9"
                     android:textSize="@dimen/size14sp"/>
 
@@ -44,12 +96,25 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/size16dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/last_name_edit"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Delete User"
+                    android:hint="Enter Last Name"
                     android:textColor="@color/gray9"
                     android:textSize="@dimen/size14sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/submit_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size48dp"
+                    android:text="Submit"/>
 
             </LinearLayout>
 

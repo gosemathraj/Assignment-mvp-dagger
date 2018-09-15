@@ -1,21 +1,35 @@
 package com.gosemathraj.assignment.models;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+@Entity(tableName = "user")
 public class User {
 
     @SerializedName("id")
     @Expose
+    @NonNull
+    @PrimaryKey
     private Integer id;
+
     @SerializedName("first_name")
     @Expose
+    @ColumnInfo(name = "first_name")
     private String firstName;
+
     @SerializedName("last_name")
     @Expose
+    @ColumnInfo(name = "last_name")
     private String lastName;
+
     @SerializedName("avatar")
     @Expose
+    @ColumnInfo(name = "avatar")
     private String avatar;
 
     public Integer getId() {

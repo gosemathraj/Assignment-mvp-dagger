@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/gray1">
 
     <!--Toolbar-->
     <android.support.v7.widget.Toolbar
@@ -15,11 +16,25 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <!--Recyclerview-->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/user_recyclerview"
+    <!--Main Content-->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none"/>
+        android:layout_height="match_parent">
+
+        <!--Progressbar-->
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="@dimen/size36dp"
+            android:layout_height="@dimen/size36dp"
+            android:layout_centerInParent="true"/>
+
+        <!--Recyclerview-->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/user_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"/>
+
+    </RelativeLayout>
 
 </LinearLayout>
